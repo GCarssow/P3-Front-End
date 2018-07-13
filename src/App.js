@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 import Header from './components/Header'
-import Daily from './components/Daily'
-import Footer from './components/Footer'
+import RandomWorkout from './components/RandomWorkout'
+import AddWorkout from './components/AddWorkout'
+
+import AddExercise from './components/AddExercise'
 
 import './App.css';
 
@@ -12,8 +14,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Daily />
-        <Footer />
+        <RandomWorkout />
+        <AddWorkout />
+        <AddExercise />
       </div>
     );
   }
