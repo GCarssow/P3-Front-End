@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 class AddExercise extends Component {
 
-
 constructor(props) {
   super(props);
   this.state = {
@@ -15,7 +14,6 @@ post = (data) => {
   console.log('data', data)
 
 const url = `https://workouts-p3.herokuapp.com/exercises`
-  // const url = 'http://localhost:5000/exercises'
 
   let content = {
     name: data.exerciseName,
@@ -48,14 +46,29 @@ handleSumbit = (e) => {
   console.log('submit_state', this.state)
   
   this.post(this.state)
+  this.setState({
+    exerciseName: '',
+    musclesWorked: '',
+    demo: ''
+  });
+  
 } 
 
 handleChange = (e) => {
   this.setState({ [e.target.name]: e.target.value })
   
-
   console.log('state', this.state)
 }
+
+clearForm = () => {
+this.setState({
+  exerciseName: '',
+  musclesWorked: '',
+  demo: ''
+})
+};
+
+
 
 render() {
     return (
@@ -63,15 +76,16 @@ render() {
     <h3>Submit a new exercise</h3>
       <form onSubmit={this.handleSumbit}> 
         <label>Exercise Name:</label>
-        <textarea name ='exerciseName' value={this.state.exerciseName} onChange ={this.handleChange}/>      
+        <input type='text' name ='exerciseName' value={this.state.exerciseName}  onChange ={this.handleChange}/>      
         
         <label>Muscles Worked:</label>
         <input type='text' name='musclesWorked' value={this.state.musclesWorked} onChange = {this.handleChange}/>
         
         <label>Demo or Description:</label>
-        <input type='text' name ='demo' value={this.state.demo} onChange ={this.handleChange}/>
+        <input type='text' name ='demo' value={this.state.demo}  onChange ={this.handleChange} />
         
-        <input type="submit" value="Add Exercise"/>  
+        <input type="submit" value="Add Exercise" onClick={this.clearForm}/>
+        <input type="button" name="clearForm" value="Clear Form" onClick={this.clearForm}  />
       </form>
     </div>
     )

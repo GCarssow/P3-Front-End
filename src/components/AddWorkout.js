@@ -50,6 +50,13 @@ handleSumbit = (e) => {
   console.log('submit_state', this.state)
   
   this.post(this.state)
+  this.setState({
+    workoutName: '',
+    equipmentNeeded: '',
+    workoutDescription: '',
+    timeNeeded: '',
+    source: ''
+  });
 } 
 
 handleChange = (e) => {
@@ -57,6 +64,16 @@ handleChange = (e) => {
   
   console.log('state', this.state)
 }
+
+clearForm = () => {
+  this.setState({
+    workoutName: '',
+    equipmentNeeded: '',
+    workoutDescription: '',
+    timeNeeded: '',
+    source: ''
+  })
+};
 
 render() {
     return (
@@ -81,6 +98,7 @@ render() {
         <input type='text' name ='source' value={this.state.source} onChange ={this.handleChange}/>
           
         <input type="submit" value="Add Your New Workout"/>  
+        <input type="button" name="clearForm" value="Clear Form" onClick={this.clearForm} />
       </form>
     </div>
     )
